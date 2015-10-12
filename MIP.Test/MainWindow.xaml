@@ -2,8 +2,19 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:mview="clr-namespace:MIP.MVVM.View;assembly=MIP"
+		xmlns:ctrFilter="clr-namespace:MIP.Test.Filter.View"
+		xmlns:ctrLoader="clr-namespace:MIP.Test.Loader"
         Title="MainWindow" Height="350" Width="525">
 	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+		<ctrFilter:ctrUserFilter x:Name="ctrUserFilterItem">
+		</ctrFilter:ctrUserFilter>
 
+		<ctrLoader:ctrLoader x:Name="ctrLoaderItem" Grid.Row="1" >
+		</ctrLoader:ctrLoader>
+		
 	</Grid>
 </mview:CWindowExtended>

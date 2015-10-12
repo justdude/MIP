@@ -88,6 +88,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behavior\CListBoxBehaviour.cs" />
     <Compile Include="Messages\Message.cs" />
     <Compile Include="MVVM\Collections\AsyncObservableCollection.cs" />
     <Compile Include="MVVM\Commands\Async\Command.cs" />
@@ -95,11 +96,13 @@
     <Compile Include="MVVM\Commands\Async\ViewModel.cs" />
     <Compile Include="MVVM\Commands\CommandReference.cs" />
     <Compile Include="MVVM\Commands\DelegateCommand.cs" />
-    <Compile Include="MVVM\ControlBehavior.cs" />
+    <Compile Include="Behavior\CControlBehavior.cs" />
     <Compile Include="MVVM\ViewModelsBase\AdwancedViewModelBase.cs" />
-    <Compile Include="MVVM\ViewModelsBase\ITabModelView.cs" />
-    <Compile Include="MVVM\ViewModelsBase\ListTabViewModel.cs" />
-    <Compile Include="MVVM\ViewModelsBase\TabModelView.cs" />
+    <Compile Include="MVVM\ViewModelsBase\Collections\ITabModelView.cs" />
+    <Compile Include="MVVM\ViewModelsBase\Collections\ListCollectionViewModel.cs" />
+    <Compile Include="MVVM\ViewModelsBase\Collections\ListTabViewModel.cs" />
+    <Compile Include="MVVM\ViewModelsBase\Collections\ListViewModelExtended.cs" />
+    <Compile Include="MVVM\ViewModelsBase\Collections\TabModelView.cs" />
     <Compile Include="MVVM\View\ControlExtended.cs" />
     <Compile Include="MVVM\View\CWindowExtended.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -129,9 +132,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

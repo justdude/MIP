@@ -1,4 +1,10 @@
-﻿namespace MVVM.AttachedProperties
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MIP.Behavior
 {
 	using System;
 	using System.Diagnostics;
@@ -9,9 +15,9 @@
 	/// <summary>
 	///   Represents 
 	/// </summary>
-	public static class ControlBehavior
+	public static class CControlBehavior
 	{
-
+		#region IsDesignMode
 		public static bool IsDesignerMode()
 		{
 			if (System.Reflection.Assembly.GetExecutingAssembly().Location.Contains("VisualStudio"))
@@ -20,10 +26,11 @@
 			}
 			return false;
 		}
+		#endregion
 
 		#region Is Read Only
 
-		public static readonly DependencyProperty IsReadOnlyProperty = DependencyProperty.RegisterAttached("IsReadOnly", typeof(bool), typeof(ControlBehavior), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
+		public static readonly DependencyProperty IsReadOnlyProperty = DependencyProperty.RegisterAttached("IsReadOnly", typeof(bool), typeof(CControlBehavior), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
 
 		public static bool GetIsReadOnly(DependencyObject control)
 		{
@@ -39,7 +46,7 @@
 
 		#region Is Visible
 
-		public static readonly DependencyProperty IsVisibleProperty = DependencyProperty.RegisterAttached("IsVisible", typeof(bool?), typeof(ControlBehavior), new FrameworkPropertyMetadata(null));
+		public static readonly DependencyProperty IsVisibleProperty = DependencyProperty.RegisterAttached("IsVisible", typeof(bool?), typeof(CControlBehavior), new FrameworkPropertyMetadata(null));
 
 		public static bool GetIsVisible(UIElement control)
 		{
@@ -60,7 +67,7 @@
 
 		#region Token
 
-		private static readonly DependencyPropertyKey TokenPropertyKey = DependencyProperty.RegisterAttachedReadOnly("Token", typeof(string), typeof(ControlBehavior), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+		private static readonly DependencyPropertyKey TokenPropertyKey = DependencyProperty.RegisterAttachedReadOnly("Token", typeof(string), typeof(CControlBehavior), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
 
 		public static readonly DependencyProperty TokenProperty = TokenPropertyKey.DependencyProperty;
 
@@ -95,7 +102,7 @@
 
 		#region Is Show On Disabled
 
-		public static readonly DependencyProperty IsShowOnDisabledProperty = DependencyProperty.RegisterAttached("IsShowOnDisabled", typeof(bool), typeof(ControlBehavior), new FrameworkPropertyMetadata(true, OnIsShowOnDisabledPropertyChangedCallback));
+		public static readonly DependencyProperty IsShowOnDisabledProperty = DependencyProperty.RegisterAttached("IsShowOnDisabled", typeof(bool), typeof(CControlBehavior), new FrameworkPropertyMetadata(true, OnIsShowOnDisabledPropertyChangedCallback));
 
 		[AttachedPropertyBrowsableForType(typeof(UIElement))]
 		public static bool GetIsShowOnDisabled(UIElement uiElement)
@@ -143,7 +150,7 @@
 
 		#region IsBlocked
 
-		public static readonly DependencyProperty IsBlockedProperty = DependencyProperty.RegisterAttached("IsBlocked", typeof(bool), typeof(ControlBehavior), new FrameworkPropertyMetadata(true, OnIsBlockedPropertyChangedCallback));
+		public static readonly DependencyProperty IsBlockedProperty = DependencyProperty.RegisterAttached("IsBlocked", typeof(bool), typeof(CControlBehavior), new FrameworkPropertyMetadata(true, OnIsBlockedPropertyChangedCallback));
 
 		public static bool GetIsBlocked(UIElement uiElement)
 		{
@@ -195,7 +202,7 @@
 
 		#region Prevent View Update
 
-		public static readonly DependencyProperty PreventViewUpdateProperty = DependencyProperty.RegisterAttached("PreventViewUpdate", typeof(bool), typeof(ControlBehavior), new FrameworkPropertyMetadata(false));
+		public static readonly DependencyProperty PreventViewUpdateProperty = DependencyProperty.RegisterAttached("PreventViewUpdate", typeof(bool), typeof(CControlBehavior), new FrameworkPropertyMetadata(false));
 
 		[AttachedPropertyBrowsableForType(typeof(ScrollViewer))]
 		public static bool GetPreventViewUpdate(ScrollViewer scrollViewer)

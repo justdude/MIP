@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MIP.MVVM.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,23 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MIP.MVVM.View;
 
-
-namespace MIP.Test
+namespace MIP.Test.Loader
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Interaction logic for ctrLoader.xaml
 	/// </summary>
-	public partial class MainWindow : CWindowExtended
+	public partial class ctrLoader : ControlExtended
 	{
-		public MainWindow():base()
+		public ctrLoader():base()
 		{
 			InitializeComponent();
-			base.AddControl(ctrUserFilterItem);
-			base.AddControl(ctrLoaderItem);
 		}
-
-
 	}
 }

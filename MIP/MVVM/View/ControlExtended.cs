@@ -1,5 +1,5 @@
 ﻿using MVVM;
-using MVVM.AttachedProperties;
+using MIP.Behavior;
 using MIP.MVVM.View;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace MIP.MVVM.View
 
 		protected string Token
 		{
-			get { return ControlBehavior.GetToken(this); }
+			get { return CControlBehavior.GetToken(this); }
 		}
 
 		public string ParentToken { get; set; }
@@ -47,7 +47,7 @@ namespace MIP.MVVM.View
 		}
 
 
-		public void Clean()
+		public virtual void Clean()
 		{
 			
 		}

@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using MIP.MVVM.View;
 using MVVM;
-using MVVM.AttachedProperties;
+using MIP.Behavior;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace MIP.MVVM.View
 	{
 		protected string Token
 		{
-			get { return ControlBehavior.GetToken(this); }
+			get { return CControlBehavior.GetToken(this); }
 		}
 
 		private Action<object> OnClosedDel { get; set; }
@@ -92,15 +92,24 @@ namespace MIP.MVVM.View
 			if (control == null)
 				return;
 
-			this.modControls.Add(control);
-			control.ParentToken = Token;
+			try
+			{
+				this.modControls.Add(control);
+				control.ParentToken = Token;
 
-			AdwancedViewModelBase dataContext = GetVM(control);
-			
-			if (dataContext == null)
-				return;
+				AdwancedViewModelBase dataContext = GetVM(control);
 
-			dataContext.ParentToken = Token;
+				if (dataContext == null)
+					return;
+
+				dataContext.ParentToken = Token;
+
+				control.Initiliaze(this);
+			}
+			catch(Exception ex)
+			{
+
+			}
 		}
 
 	}

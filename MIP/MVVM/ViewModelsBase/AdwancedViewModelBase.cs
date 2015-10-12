@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 
-namespace MVVM
+namespace MIP.MVVM
 {
 	/// <summary>
 	/// Provides common functionality for ViewModel classes

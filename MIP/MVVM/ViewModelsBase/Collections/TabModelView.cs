@@ -1,18 +1,21 @@
-﻿using System;
+﻿using MVVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
-namespace MVVM
+namespace MIP.MVVM
 {
-	public class TabModelView :  AdwancedViewModelBase//ListTabViewModel<M, VM>
+	public class TabModelView : AdwancedViewModelBase//ListTabViewModel<M, VM>
 	{
 		public string Header { get; set; }
 
-		public virtual ICommand CloseTab { get; set;}
+		public virtual ICommand CloseTab { get; set; }
 
-		public TabModelView():base()
+
+		public TabModelView()
+			: base()
 		{
 		}
 
