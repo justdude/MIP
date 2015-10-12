@@ -11,9 +11,9 @@ namespace MIP.MVVM.View
 {
 	public class ControlExtended : UserControl
 	{
-		private CWindowExtended modParentWindow;
+		public CWindowExtended ParentWindow;
 
-		protected string Token
+		public string Token
 		{
 			get { return CControlBehavior.GetToken(this); }
 		}
@@ -25,12 +25,12 @@ namespace MIP.MVVM.View
 			this.Unloaded += ControlExtended_UnLoaded;
 		}
 
-		public void Initiliaze(CWindowExtended wind)
+		private void Initiliaze(CWindowExtended wind)
 		{
 			if (wind == null)
 				throw new ArgumentNullException();
 
-			this.modParentWindow = wind;
+			this.ParentWindow = wind;
 		}
 
 		void ControlExtended_UnLoaded(object sender, System.Windows.RoutedEventArgs e)
@@ -46,6 +46,10 @@ namespace MIP.MVVM.View
 			this.Unloaded -= ControlExtended_UnLoaded;
 		}
 
+		public virtual void BindingDataContext()
+		{
+
+		}
 
 		public virtual void Clean()
 		{

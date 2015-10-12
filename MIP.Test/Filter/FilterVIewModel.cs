@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using MIP.MVVM;
-using MIP.Test.ViewModel;
 using MIP.MVVM.ViewModelsBase.Collections;
+using MIP.MVVM.ViewModelSpecial;
 namespace MIP.Test.Filter
 {
 	public class FilterVIewModel : AdwancedViewModelBase

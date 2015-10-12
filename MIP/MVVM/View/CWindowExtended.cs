@@ -37,7 +37,12 @@ namespace MIP.MVVM.View
 
 		private void RegisterMessages()
 		{
-			Messenger.Default.Register<Messages.CloseWindowMessage>(this, Token, OnClose);
+			try
+			{
+				Messenger.Default.Register<Messages.CloseWindowMessage>(this, Token, OnClose);
+			}
+			catch
+			{ }
 		}
 
 		private void OnClose(Messages.CloseWindowMessage obj)
@@ -67,7 +72,7 @@ namespace MIP.MVVM.View
 
 		public void Clean()
 		{
-			AdwancedViewModelBase viewModel = GetVM(DataContext);
+			AdwancedViewModelBase viewModel = DataContext as AdwancedViewModelBase;
 
 			if (viewModel == null)
 				return;
@@ -78,13 +83,12 @@ namespace MIP.MVVM.View
 			viewModel = null;
 		}
 
-		private AdwancedViewModelBase GetVM(object target)
+		private AdwancedViewModelBase GetVM(ControlExtended target)
 		{
 			if (target == null)
 				return null;
 
-			AdwancedViewModelBase viewModel = target as AdwancedViewModelBase;
-			return viewModel;
+			return target.DataContext as AdwancedViewModelBase;
 		}
 
 		public void AddControl(ControlExtended control)
@@ -95,6 +99,21 @@ namespace MIP.MVVM.View
 			try
 			{
 				this.modControls.Add(control);
+			}
+			catch(Exception ex)
+			{
+
+			}
+		}
+
+		private void InitControl(ControlExtended control)
+		{
+			if (control == null)
+				return;
+
+			try
+			{
+				control.ParentWindow = this;
 				control.ParentToken = Token;
 
 				AdwancedViewModelBase dataContext = GetVM(control);
@@ -103,8 +122,8 @@ namespace MIP.MVVM.View
 					return;
 
 				dataContext.ParentToken = Token;
+				dataContext.Token = control.Token;
 
-				control.Initiliaze(this);
 			}
 			catch(Exception ex)
 			{
@@ -112,5 +131,14 @@ namespace MIP.MVVM.View
 			}
 		}
 
+
+		public void RaiseInitChildrens()
+		{
+			foreach (var item in modControls)
+			{
+				item.BindingDataContext();
+				InitControl(item);
+			}
+		}
 	}
 }

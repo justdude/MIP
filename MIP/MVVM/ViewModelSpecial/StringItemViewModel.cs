@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MIP.Test.ViewModel
+namespace MIP.MVVM.ViewModelSpecial
 {
 	public class StringItemViewModel : AdwancedViewModelBase
 	{

@@ -30,7 +30,6 @@ namespace MIP.MVVM.ViewModelsBase.Collections
 		#region Events
 
 		public event ItemsListEventHandler SelectedItemChanged;
-		private TItemViewModel mvSelectedItemObj;
 
 		#endregion
 
