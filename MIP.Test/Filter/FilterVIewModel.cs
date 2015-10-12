@@ -12,9 +12,6 @@ namespace MIP.Test.Filter
 {
 	public class FilterVIewModel : AdwancedViewModelBase
 	{
-		private StringItemViewModel mvSelectedPerson;
-		private StringItemViewModel mvSelectedJob;
-
 		public FilterVIewModel()
 		{
 			Jobs = new ListCollectionViewModel<StringItemViewModel>();
@@ -36,11 +33,32 @@ namespace MIP.Test.Filter
 
 			Persons.Items.Add(new StringItemViewModel("Ivan"));
 			Persons.Items.Add(new StringItemViewModel("Andrew"));
+
+			Jobs.SelectedItemChanged += Jobs_SelectedItemChanged;
+			Persons.SelectedItemChanged += Persons_SelectedItemChanged;
+		}
+
+		void Persons_SelectedItemChanged(object selectedItem)
+		{
+			StringItemViewModel item = selectedItem as StringItemViewModel;
+			
+			if (item == null)
+				return;
+
+			Jobs.Items.Clear();
+			Jobs.Items.Add(new StringItemViewModel((item.Text.Contains("Ivan") ? "Programmer":"Warrior" )));
+		}
+
+		void Jobs_SelectedItemChanged(object selectedItem)
+		{
 		}
 
 		public override void Cleanup()
 		{
 			base.Cleanup();
+
+			Jobs.SelectedItemChanged -= Jobs_SelectedItemChanged;
+			Persons.SelectedItemChanged -= Persons_SelectedItemChanged;
 		}
 	}
 }
