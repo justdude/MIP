@@ -17,13 +17,15 @@
 			<RowDefinition></RowDefinition>
 		</Grid.RowDefinitions>
 		<ComboBox 
-			ItemsSource="{Binding Persons}" 
-			SelectedItem="{Binding SelectedPerson}"
-			ItemTemplate="{StaticResource cmbTemplate}">
+  DataContext="{Binding Persons}" 
+				  ItemsSource="{Binding Items}" 
+				  SelectedItem="{Binding SelectedItem}"
+				  ItemTemplate="{StaticResource cmbTemplate}">
 		</ComboBox>
 		<ComboBox Grid.Row="1" 
-				  ItemsSource="{Binding Jobs}" 
-				  SelectedItem="{Binding SelectedJob}"
+				  DataContext="{Binding Jobs}" 
+				  ItemsSource="{Binding Items}" 
+				  SelectedItem="{Binding SelectedItem}"
 				  ItemTemplate="{StaticResource cmbTemplate}">
 		</ComboBox>
 	</Grid>
