@@ -74,6 +74,8 @@ namespace MIP.MVVM.ViewModelsBase.Collections
 			}
 		}
 
+		//public object Tag { get; set; }
+
 		#endregion
 
 		#region .Ctr

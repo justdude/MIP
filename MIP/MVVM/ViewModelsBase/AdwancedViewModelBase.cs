@@ -20,6 +20,7 @@ namespace MIP.MVVM
 		private bool mvIsBusy;
 		private bool mvIsLoading;
 		private string mvToken;
+		private bool mvIsEnabled;
 
 		#endregion
 
@@ -58,6 +59,23 @@ namespace MIP.MVVM
 				mvIsLoading = value;
 
 				RaisePropertyChanged<bool>(() => IsLoading);
+			}
+		}
+
+		public virtual bool IsEnabled
+		{
+			get
+			{
+				return mvIsEnabled;
+			}
+			set
+			{
+				if (value == mvIsEnabled)
+					return;
+
+				mvIsEnabled = value;
+
+				RaisePropertyChanged<bool>(() => IsEnabled);
 			}
 		}
 
