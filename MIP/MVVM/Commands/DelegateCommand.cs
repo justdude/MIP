@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-namespace MVVM
+namespace MIP.Commands
 {
     /// <summary>
     ///     This class allows delegating the commanding logic to methods passed as parameters,

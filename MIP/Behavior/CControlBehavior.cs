@@ -67,7 +67,7 @@ namespace MIP.Behavior
 
 		#region Token
 
-		private static readonly DependencyPropertyKey TokenPropertyKey = DependencyProperty.RegisterAttachedReadOnly("Token", typeof(string), typeof(CControlBehavior), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+		private static readonly DependencyPropertyKey TokenPropertyKey = DependencyProperty.RegisterAttachedReadOnly("Token", typeof(string), typeof(CControlBehavior), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None));//FrameworkPropertyMetadataOptions.Inherits));
 
 		public static readonly DependencyProperty TokenProperty = TokenPropertyKey.DependencyProperty;
 

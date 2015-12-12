@@ -10,11 +10,42 @@ namespace MIP.MVVM
 {
 	public class ListViewModelExtended<T> : AdwancedViewModelBase where T : AdwancedViewModelBase
 	{
-		public ObservableCollection<T> SelectedItems { get; set; }
+		private object mvSelectedItem;
+		private int mvSelectedIndex;
+		public ObservableCollection<T> Items { get; set; }
+
+		public int SelectedIndex
+		{
+			get { return mvSelectedIndex; }
+			set
+			{
+				if (mvSelectedIndex == value)
+					return;
+
+				mvSelectedIndex = value;
+
+				RaisePropertyChanged(() => SelectedIndex);
+			}
+		}
+
+		public object SelectedItem
+		{
+			get { return mvSelectedItem; }
+			set
+			{
+				if (mvSelectedItem == value)
+					return;
+
+				mvSelectedItem = value;
+
+				RaisePropertyChanged(() => SelectedItem);
+			}
+		} 
+
 
 		public ListViewModelExtended():base()
 		{
-
+			Items = new ObservableCollection<T>();
 		}
 
 

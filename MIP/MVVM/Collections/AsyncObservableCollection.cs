@@ -6,51 +6,51 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace MVVM.Collections
+namespace MIP.Collections
 {
-    public class AsyncObservableCollection<T> : ObservableCollection<T>
-    {
-        private AsyncOperation asyncOp = null;
+	public class AsyncObservableCollection<T> : ObservableCollection<T>
+	{
+		private AsyncOperation asyncOp = null;
 
-        public AsyncObservableCollection()
-        {
-            CreateAsyncOp();
-        }
+		public AsyncObservableCollection()
+		{
+			CreateAsyncOp();
+		}
 
-        public AsyncObservableCollection(IEnumerable<T> list)
-            : base(list)
-        {
-            CreateAsyncOp();
-        }
+		public AsyncObservableCollection(IEnumerable<T> list)
+			: base(list)
+		{
+			CreateAsyncOp();
+		}
 
-        private void CreateAsyncOp()
-        {
-            // Create the AsyncOperation to post events on the creator thread
-            asyncOp = AsyncOperationManager.CreateOperation(null);
-        }
+		private void CreateAsyncOp()
+		{
+			// Create the AsyncOperation to post events on the creator thread
+			asyncOp = AsyncOperationManager.CreateOperation(null);
+		}
 
-        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
-        {
-            // Post the CollectionChanged event on the creator thread
-            asyncOp.Post(RaiseCollectionChanged, e);
-        }
+		protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+		{
+			// Post the CollectionChanged event on the creator thread
+			asyncOp.Post(RaiseCollectionChanged, e);
+		}
 
-        private void RaiseCollectionChanged(object param)
-        {
-            // We are in the creator thread, call the base implementation directly
-            base.OnCollectionChanged((NotifyCollectionChangedEventArgs)param);
-        }
+		private void RaiseCollectionChanged(object param)
+		{
+			// We are in the creator thread, call the base implementation directly
+			base.OnCollectionChanged((NotifyCollectionChangedEventArgs)param);
+		}
 
-        protected override void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            // Post the PropertyChanged event on the creator thread
-            asyncOp.Post(RaisePropertyChanged, e);
-        }
+		protected override void OnPropertyChanged(PropertyChangedEventArgs e)
+		{
+			// Post the PropertyChanged event on the creator thread
+			asyncOp.Post(RaisePropertyChanged, e);
+		}
 
-        private void RaisePropertyChanged(object param)
-        {
-            // We are in the creator thread, call the base implementation directly
-            base.OnPropertyChanged((PropertyChangedEventArgs)param);
-        }
-    }
+		private void RaisePropertyChanged(object param)
+		{
+			// We are in the creator thread, call the base implementation directly
+			base.OnPropertyChanged((PropertyChangedEventArgs)param);
+		}
+	}
 }

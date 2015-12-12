@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MIP.Collections;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,7 +36,7 @@ namespace MIP.MVVM.ViewModelsBase.Collections
 
 		#region Properties
 
-		public ObservableCollection<TItemViewModel> Items { get; private set; }
+		public ObservableRangeCollection<TItemViewModel> Items { get; private set; }
 
 		object IItemsListViewModel.SelectedItem
 		{
@@ -83,7 +84,7 @@ namespace MIP.MVVM.ViewModelsBase.Collections
 		public ListCollectionViewModel()
 			: base()
 		{
-			Items = new ObservableCollection<TItemViewModel>();
+			Items = new ObservableRangeCollection<TItemViewModel>();
 		}
 
 		#endregion

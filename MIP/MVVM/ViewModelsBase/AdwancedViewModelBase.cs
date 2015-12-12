@@ -45,7 +45,7 @@ namespace MIP.MVVM
 			}
 		}
 
-		public bool IsLoading
+		public virtual bool IsLoading
 		{
 			get
 			{
@@ -127,6 +127,14 @@ namespace MIP.MVVM
 				return;
 
 			CurrentDispatcher.BeginInvoke(action);
+		}
+
+		public void BeginExecute(DispatcherPriority priority, Action action)
+		{
+			if (CurrentDispatcher == null || action == null)
+				return;
+
+			CurrentDispatcher.BeginInvoke(action, priority);
 		}
 
 		//protected void OnPropertyChanged(string propertyName)

@@ -138,6 +138,7 @@ namespace MIP.MVVM.View
 			{
 				item.BindingDataContext();
 				InitControl(item);
+				
 			}
 		}
 	}

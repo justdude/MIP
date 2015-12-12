@@ -73,6 +73,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\packages\NLog.4.2.1\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -95,17 +98,21 @@
     <Compile Include="Behavior\CListBoxBehaviour.cs" />
     <Compile Include="Messages\Message.cs" />
     <Compile Include="MVVM\Collections\AsyncObservableCollection.cs" />
+    <Compile Include="MVVM\Collections\ObservableRangeCollection.cs" />
     <Compile Include="MVVM\Commands\Async\Command.cs" />
     <Compile Include="MVVM\Commands\Async\NotifyingProperty.cs" />
     <Compile Include="MVVM\Commands\Async\ViewModel.cs" />
+    <Compile Include="MVVM\Commands\CommandBehavior.cs" />
     <Compile Include="MVVM\Commands\CommandReference.cs" />
     <Compile Include="MVVM\Commands\DelegateCommand.cs" />
     <Compile Include="Behavior\CControlBehavior.cs" />
+    <Compile Include="MVVM\Three\CThreeHelper.cs" />
     <Compile Include="MVVM\ViewModelsBase\AdwancedViewModelBase.cs" />
     <Compile Include="MVVM\ViewModelsBase\Collections\ITabModelView.cs" />
     <Compile Include="MVVM\ViewModelsBase\Collections\ListCollectionViewModel.cs" />
     <Compile Include="MVVM\ViewModelsBase\Collections\ListTabViewModel.cs" />
     <Compile Include="MVVM\ViewModelsBase\Collections\ListViewModelExtended.cs" />
+    <Compile Include="MVVM\ViewModelsBase\Collections\NodeViewModel.cs" />
     <Compile Include="MVVM\ViewModelsBase\Collections\TabModelView.cs" />
     <Compile Include="MVVM\ViewModelSpecial\StringItemViewModel.cs" />
     <Compile Include="MVVM\View\ControlExtended.cs" />
@@ -133,9 +140,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

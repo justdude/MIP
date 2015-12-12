@@ -36,5 +36,10 @@ namespace MIP.MVVM.ViewModelSpecial
 		{
 			mvText = text;
 		}
+
+		public override string ToString()
+		{
+			return Text;
+		}
 	}
 }
