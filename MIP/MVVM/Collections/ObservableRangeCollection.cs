@@ -14,12 +14,14 @@ namespace MIP.Collections
 		private const string CountString = "Count";
 		private const string IndexerName = "Item[]";
 
-		protected enum ProcessRangeAction
+		public enum ProcessRangeAction
 		{
 			Add,
 			Replace,
 			Remove
 		};
+
+		public event Action<object, ProcessRangeAction> BeforeCollectionChanged;
 
 		public ObservableRangeCollection()
 			: base()
@@ -43,6 +45,8 @@ namespace MIP.Collections
 			var items = collection as IList<T> ?? collection.ToList();
 			if (!items.Any()) return;
 
+			ExecuteOnCollectionChanged(collection, action);
+
 			this.CheckReentrancy();
 
 			if (action == ProcessRangeAction.Replace) this.Items.Clear();
@@ -52,9 +56,21 @@ namespace MIP.Collections
 				else this.Items.Add(item);
 			}
 
+			//if (action == ProcessRangeAction.Remove) { }
+			//else
+			//	(this.Items as List<T>).AddRange(items);
+
 			this.OnPropertyChanged(new PropertyChangedEventArgs(CountString));
 			this.OnPropertyChanged(new PropertyChangedEventArgs(IndexerName));
 			this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+		}
+
+		private void ExecuteOnCollectionChanged(IEnumerable<T> collection, ProcessRangeAction state)
+		{
+			if (BeforeCollectionChanged == null)
+				return;
+
+			BeforeCollectionChanged(collection, state);
 		}
 
 		public void AddRange(IEnumerable<T> collection)

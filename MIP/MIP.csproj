@@ -114,6 +114,7 @@
     <Compile Include="MVVM\ViewModelsBase\Collections\ListViewModelExtended.cs" />
     <Compile Include="MVVM\ViewModelsBase\Collections\NodeViewModel.cs" />
     <Compile Include="MVVM\ViewModelsBase\Collections\TabModelView.cs" />
+    <Compile Include="MVVM\ViewModelSpecial\IItemWithText.cs" />
     <Compile Include="MVVM\ViewModelSpecial\StringItemViewModel.cs" />
     <Compile Include="MVVM\View\ControlExtended.cs" />
     <Compile Include="MVVM\View\CWindowExtended.cs" />

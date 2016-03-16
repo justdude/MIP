@@ -12,7 +12,7 @@ namespace MIP.MVVM.View
 {
 	public class CWindowExtended : Window
 	{
-		protected string Token
+		public string Token
 		{
 			get { return CControlBehavior.GetToken(this); }
 		}
@@ -31,7 +31,7 @@ namespace MIP.MVVM.View
 		public CWindowExtended()
 		{
 			modControls = new List<ControlExtended>();
-			Closing += ControlExtended_UnLoaded;
+			Closed += ControlExtended_UnLoaded;
 			RegisterMessages();
 		}
 
@@ -59,7 +59,7 @@ namespace MIP.MVVM.View
 
 		}
 
-		private void ControlExtended_UnLoaded(object sender, System.ComponentModel.CancelEventArgs e)
+		private void ControlExtended_UnLoaded(object sender, EventArgs e)
 		{
 			Clean();
 			Closing -= ControlExtended_UnLoaded;

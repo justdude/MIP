@@ -45,6 +45,22 @@ namespace MIP.MVVM
 			}
 		}
 
+		private string statusText;
+
+		public virtual string StatusText
+		{
+			get { return statusText; }
+			set
+			{
+				if (value == statusText)
+					return;
+
+				statusText = value;
+
+				RaisePropertyChanged<string>(() => StatusText);
+			}
+		}
+
 		public virtual bool IsLoading
 		{
 			get

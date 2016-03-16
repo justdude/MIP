@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace MIP.MVVM.ViewModelSpecial
 {
-	public class StringItemViewModel : AdwancedViewModelBase
+	public class StringItemViewModel : AdwancedViewModelBase, IItemWithText
 	{
 		private string mvText;
-		public string Text
+
+		public virtual string Text
 		{
 			get
 			{
